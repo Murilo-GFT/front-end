@@ -1,0 +1,47 @@
+<div class="row">
+
+</div>
+
+<div class="row mt-2" *ngIf="dataSource">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="dataLancamento">
+        <mat-header-cell *matHeaderCellDef> Data de lançamento </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dataLancamentoContaCorrenteCliente}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descricao">
+        <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lancamentoContaCorrenteCliente.nomeTipoOperacao}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="numero">
+        <mat-header-cell *matHeaderCellDef> Número </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lancamentoContaCorrenteCliente.numeroRemessaBanco}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="situacao">
+        <mat-header-cell *matHeaderCellDef> Situação </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lancamentoContaCorrenteCliente.nomeSituacaoRemessa}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dataConfirmacao">
+        <mat-header-cell *matHeaderCellDef> Data de confirmação </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dataEfetivaLancamento}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dadosBancarios">
+        <mat-header-cell *matHeaderCellDef> Dados bancários </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nomeBanco}} Ag {{element.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroAgencia}} CC {{element.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroContaCorrente}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valor">
+        <mat-header-cell *matHeaderCellDef class="mat-column-col7"> Valor final </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="mat-column-col7"> {{element.valorLancamentoRemessa}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+</div>
+  
